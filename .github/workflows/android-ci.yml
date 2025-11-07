@@ -27,6 +27,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 8.10.2
+          generate-job-summary: false
 
       - name: Cache Gradle
         uses: actions/cache@v4
@@ -38,10 +39,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
+      - name: Generate Gradle Wrapper
+        run: |
+          gradle wrapper --gradle-version=8.10.2
+          chmod +x gradlew
+
       - name: Build Debug APK
         run: |
-          gradle --version
-          gradle :composeApp:assembleDebug --stacktrace --info --warning-mode all --no-daemon
+          ./gradlew --version
+          ./gradlew :composeApp:assembleDebug --stacktrace --info --warning-mode all --no-daemon
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
