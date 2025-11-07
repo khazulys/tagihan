@@ -31,6 +31,10 @@ jobs:
           # Install required SDK components
           /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0"
 
+      - name: Create local.properties
+        run: |
+          echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
+
       - name: Setup Gradle Wrapper
         run: |
           # Download gradle wrapper files
@@ -41,7 +45,9 @@ jobs:
           chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew :composeApp:assembleDebug
+        run: |
+          ./gradlew --version
+          ./gradlew :composeApp:assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
