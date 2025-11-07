@@ -1,0 +1,16 @@
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Android/IntelliJ
+.idea/
+.DS_Store
+local.properties
+*.iml
+
+# Kotlin/Compose
+*.kotlin_module
+
+# Logs
+*.log
