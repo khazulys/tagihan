@@ -1,7 +1,2 @@
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
-    }
-}
+// Intentionally empty: repositories are declared in settings.gradle.kts
+// to comply with RepositoriesMode.FAIL_ON_PROJECT_REPOS
