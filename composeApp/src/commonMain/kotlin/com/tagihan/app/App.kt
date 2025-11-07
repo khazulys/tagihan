@@ -36,7 +36,7 @@ fun TagihanApp() {
             },
             bottomBar = {
                 NavigationBar {
-                    Tab.values().forEach { tab ->
+                    Tab.entries.forEach { tab ->
                         NavigationBarItem(
                             selected = currentTab == tab,
                             onClick = { currentTab = tab },
