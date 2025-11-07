@@ -21,7 +21,8 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
         with:
-          packages: 'build-tools;34.0.0 platforms;android-34'
+          packages: 'platform-tools platforms;android-34 build-tools;34.0.0'
+          accept-android-sdk-licenses: true
 
       - name: Download Gradle Wrapper
         run: |
@@ -44,8 +45,9 @@ jobs:
 
       - name: Build Debug APK
         run: |
+          export ANDROID_HOME=$ANDROID_SDK_ROOT
           ./gradlew --version
-          ./gradlew :composeApp:assembleDebug --stacktrace --info --warning-mode all --no-daemon
+          ./gradlew :composeApp:assembleDebug --stacktrace
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
