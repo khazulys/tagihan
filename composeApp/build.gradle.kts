@@ -1,18 +1,11 @@
 plugins {
     kotlin("multiplatform")
-    kotlin("plugin.compose")
     id("com.android.application")
     id("org.jetbrains.compose")
 }
 
 kotlin {
-    androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
-        }
-    }
+    androidTarget()
 
     jvmToolchain(17)
 

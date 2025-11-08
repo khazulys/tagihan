@@ -6,9 +6,8 @@ pluginManagement {
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
     plugins {
-        id("org.jetbrains.compose") version "1.7.0"
-        kotlin("multiplatform") version "2.0.21"
-        kotlin("plugin.compose") version "2.0.21"
+        id("org.jetbrains.compose") version "1.6.11"
+        kotlin("multiplatform") version "1.9.24"
         id("com.android.application") version "8.5.2"
     }
 }
