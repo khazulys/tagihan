@@ -8,6 +8,7 @@ pluginManagement {
     plugins {
         id("org.jetbrains.compose") version "1.6.11"
         kotlin("multiplatform") version "2.0.0"
+        kotlin("plugin.compose") version "2.0.0"
         id("com.android.application") version "8.7.2"
     }
 }
