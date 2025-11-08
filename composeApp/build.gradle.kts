@@ -1,12 +1,8 @@
 plugins {
-    id("org.jetbrains.compose")
     kotlin("multiplatform")
     kotlin("plugin.compose")
     id("com.android.application")
-}
-
-composeCompiler {
-    enableStrongSkippingMode = true
+    id("org.jetbrains.compose")
 }
 
 kotlin {
