@@ -34,20 +34,16 @@ jobs:
       - name: Create local.properties
         run: |
           echo "sdk.dir=/usr/local/lib/android/sdk" > local.properties
-
-      - name: Setup Gradle Wrapper
-        run: |
-          # Download gradle wrapper files
-          wget -q https://github.com/gradle/gradle/raw/v8.10.2/gradlew
-          mkdir -p gradle/wrapper
-          wget -q https://github.com/gradle/gradle/raw/v8.10.2/gradle/wrapper/gradle-wrapper.jar -O gradle/wrapper/gradle-wrapper.jar
-          echo "distributionUrl=https\://services.gradle.org/distributions/gradle-8.10.2-bin.zip" > gradle/wrapper/gradle-wrapper.properties
-          chmod +x gradlew
-
+          
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.10.2
+          
       - name: Build with Gradle
-        run: |
-          ./gradlew --version
-          ./gradlew :composeApp:assembleDebug --stacktrace
+        env:
+          GRADLE_OPTS: -Xmx4g -XX:MaxMetaspaceSize=2g -Dfile.encoding=UTF-8
+        run: gradle :composeApp:assembleDebug --stacktrace --no-daemon
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
